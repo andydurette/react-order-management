@@ -1,0 +1,47 @@
+[
+{
+  "worker": {
+    "companyName": "Topiczoom", 
+    "email": "sstorie@boxco.com", 
+    "id": 0, 
+    "image": "images/couriers/sara.png", 
+    "name": "Sara Storie"
+  }
+},
+{
+  "worker": {
+    "companyName": "Gabspot", 
+    "email": "pbrogan@boxco.com", 
+    "id": 1, 
+    "image": "images/couriers/pete.png", 
+    "name": "Pete Brogan"
+  }
+},
+{
+  "worker": {
+    "companyName": "Yadel", 
+    "email": "jessica@boxco.com", 
+    "id": 2, 
+    "image": "images/couriers/jessica.png", 
+    "name": "Jessica Charrett"
+  }
+},
+{
+  "worker": {
+    "companyName": "Statcounter", 
+    "email": "jmichel@boxco.com", 
+    "id": 3, 
+    "image": "images/couriers/joel.png", 
+    "name": "Joel Michel"
+  }
+},
+{
+  "worker": {
+    "companyName": "Wordify", 
+    "email": "egalier@boxco.com", 
+    "id": 4, 
+    "image": "images/couriers/edvard.png", 
+    "name": "Edvard Galier"
+  }
+}
+]
