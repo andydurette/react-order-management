@@ -44,7 +44,8 @@ export default class App extends React.Component {
   fetch('/json/work_orders.json')
   .then((res) => res.json())
   .then((data) => this.setState({work_orders: data}, () => {
-    this.state.work_orders.orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline))
+    this.state.work_orders.orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline));
+    console.log('running callaback function');
   } ))
   //.then(requestor('https://www.hatchways.io/api/assessment/workers/'))
   .then(fetch('/json/worker.json')
