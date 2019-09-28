@@ -43,10 +43,11 @@ export default class App extends React.Component {
 // isFetching is lastely changed so that page is all loaded so there won't be any errors with state not being loaded yet.
   fetch('/json/work_orders.json')
   .then((res) => res.json())
-  .then((data) => this.setState({work_orders: data}))
-  .then(() =>  this.state.work_orders.orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline)))
+  .then((data) => this.setState({work_orders: data}, () => {
+    this.state.work_orders.orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline))
+  } ))
   //.then(requestor('https://www.hatchways.io/api/assessment/workers/'))
-  .then(  fetch('/json/worker.json')
+  .then(fetch('/json/worker.json')
   .then((res) => res.json())
   .then((data) => this.setState({worker: data}))
   .then(() => this.setState({ isFetching: false})))
