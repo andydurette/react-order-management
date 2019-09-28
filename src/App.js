@@ -5,6 +5,8 @@ import OrderTiles from './OrderTiles';
 import WorkerFilter from './WorkerFilter';
 import DeadlineOrder from './DeadlineOrder';
 import './App.css';
+//import worker from './json/worker.json';
+//import work_orders from './json/work_orders.json';
 
 export default class App extends React.Component {
 
@@ -12,7 +14,7 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       work_orders: [],
-      worker:[],
+      worker:'',
       work_by_order:0,
       search: "",
       isFetching: true
@@ -42,31 +44,24 @@ export default class App extends React.Component {
 // fetch requests made here for all the data needed for the page, a loading screen will be shown until all the data loading has been dealt with sequentially thanks to promises
 // isFetching is lastely changed so that page is all loaded so there won't be any errors with state not being loaded yet.
 
-/*fetch('/json/work_orders.json')
-  .then((res) => res.json())
-  .then((data) => {
-    let dataArray = [data];
-    dataArray[0].orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline))
-    return dataArray
-  })*/
+  
+
 
   fetch('/json/work_orders.json')
   .then((res) => res.json())
   .then((data) => {
-    let dataArray = [data];
-    dataArray[0].orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline));
-   return dataArray[0]
-  })
-  .then((dataArray) => this.setState({work_orders: dataArray}))
-  //.then(this.state.work_orders.orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline)))
-  //.then(requestor('https://www.hatchways.io/api/assessment/workers/'))
-  .then(fetch('/json/worker.json')
-  .then((res) => res.json())
-  .then((data) => this.setState({worker: data}))
-  .then(() => this.setState({ isFetching: false})))
-  
+  let dataArray = [data];
+  dataArray[0].orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline));
+  this.setState({work_orders: dataArray[0]})
+  }).then(() => stateUpdate2());
 
-  //.then(() => requestor('/json/workers/'))
+
+let stateUpdate2 = () =>{
+  fetch('/json/worker.json')
+  .then((res) => res.json())
+  .then((data) => this.setState({worker: data, isFetching: false}))
+}  
+    
 } 
 
 //End of state being called from json files
