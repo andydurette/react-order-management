@@ -4,9 +4,8 @@ import OrderHeading from './OrderHeading';
 import OrderTiles from './OrderTiles';
 import WorkerFilter from './WorkerFilter';
 import DeadlineOrder from './DeadlineOrder';
+import Footer from './Footer';
 import './App.css';
-//import worker from './json/worker.json';
-//import work_orders from './json/work_orders.json';
 
 export default class App extends React.Component {
 
@@ -20,40 +19,18 @@ export default class App extends React.Component {
       isFetching: true
     }
 
-//Start of state being called from json files
-
-// Recursive Solution as more additonal calls are needed per employee and if new employees were added it would still grab them as well.
-
-/*let requestor = (url, results = [], count = 0) => {
-  fetch(url + count)
-  .then((res) => res.json())
-  .then((data) => {
-   if (data.error){ 
-     this.setState({worker : results })
-     // Calls state change on loading screen at the end of the recursion which is at the end of the fetch promise stack
-     this.setState({ isFetching: false})
-   }else{ 
-     results.push(data);
-     count++
-     requestor(url, results, count);
-     }
- })
-} */
-
-
+// Start of state being called from json files using fetch to simulate if I did not have files on hand.
 // fetch requests made here for all the data needed for the page, a loading screen will be shown until all the data loading has been dealt with sequentially thanks to promises
 // isFetching is lastely changed so that page is all loaded so there won't be any errors with state not being loaded yet.
-
-  
-
 
   fetch('/json/work_orders.json')
   .then((res) => res.json())
   .then((data) => {
-  let dataArray = [data];
-  dataArray[0].orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline));
-  this.setState({work_orders: dataArray[0]})
-  }).then(() => stateUpdate2());
+    let dataArray = [data];
+    dataArray[0].orders.sort((a, b) => parseFloat(a.deadline) - parseFloat(b.deadline));
+    this.setState({work_orders: dataArray[0]})
+    })
+  .then(() => stateUpdate2());
 
 
 let stateUpdate2 = () =>{
@@ -86,7 +63,7 @@ updateSearch = (event) => {
 render() {
   return (
       <React.Fragment>
-        <div>
+        <div className="stickyFooterWrapper">
         {this.state.isFetching ?  
         <div id="loadingScreen">
         <p>Loading...</p>
@@ -105,7 +82,7 @@ render() {
           />
           </section>
           
-          <section id='orders_container'> 
+          <section id='ordersContainer'> 
              {this.state.work_orders.orders.map(orders => (
                 <OrderTiles
                   key={orders.id}
@@ -129,7 +106,7 @@ render() {
           </React.Fragment>
           )}
           </div>
-          
+          <Footer/>
         </React.Fragment>
         
   );

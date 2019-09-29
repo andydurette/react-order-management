@@ -1,27 +1,44 @@
 html,body{
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   background-image: url('/images/email-pattern-box-dark.png');
   /* background-image: url('/images/email-pattern.png'); */
 }
 
+#root{
+  min-height:100%;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+}
 
 h1,h2{
   text-align:center;
 }
 
-.no-wrap{
+.noWrap{
 white-space: nowrap;
 }
 
-#orders_container{
+#loadingScreen{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 4em;
+}
+
+#ordersContainer{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 90%;
-  max-width:1200px;
-  margin:0 auto;
+  width: 95%;
+  max-width:1300px;
+  margin:0 auto 60px auto;
 }
 
 .orderHeader{
@@ -33,7 +50,7 @@ white-space: nowrap;
   position: relative;
 }
 
-.orderHeader .gradient-layer{
+.orderHeader .gradientLayer{
   position: absolute;
   top: 0;
   left: 0;
@@ -47,36 +64,20 @@ white-space: nowrap;
   align-items: center;
 }
 
-.orderHeader .gradient-layer h1{ 
+.orderHeader .gradientLayer h1{ 
   font-size:2em;
   font-family: 'Candal', sans-serif;
   padding: 0 20px;
+  margin: 0 0;
 }
 
-.orderHeader .gradient-layer p{ 
+.orderHeader .gradientLayer p{ 
   text-align:center;
-  font-size:1.2em;
+  font-size:1.1em;
   padding: 0 20px;
 }
 
-@media only screen and (min-width: 768px) {
-  .orderHeader{
-    height:300px;
-  }
-  .orderHeader .gradient-layer h1{ 
-    font-size:3em;
-  }
-}
-
-
-@media only screen and (max-width: 1120px) {
-  #orders_container{
-    justify-content: center;
-  }
-}
-
-
-.order_tile{
+.orderTile{
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -90,11 +91,11 @@ white-space: nowrap;
   margin: 0 auto 50px auto;
 }
 
-.order_tile.hidden{
+.orderTile.hidden{
   display:none;
 }
 
-.order_tile .order_name{
+.orderTile .orderName{
   font-weight: 700;
   margin-bottom: 0;
   width: 90%;
@@ -105,7 +106,7 @@ white-space: nowrap;
   font-family:'Lato', sans-serif;
 }
 
-.order_tile .order_title{
+.orderTile .orderTitle{
   max-width:90%;
   font-family: 'Lato', sans-serif;
   font-weight:700;
@@ -115,14 +116,14 @@ white-space: nowrap;
   margin-right:auto;
 }
 
-.order_tile .order_copy{
+.orderTile .orderCopy{
   max-width:90%;
   margin-bottom:25px;
   margin-left:auto;
   margin-right:auto;
 }
 
-.order_tile .employee_details{
+.orderTile .employeeDetails{
   margin-top: 20px;
   padding-left: 10px;
   box-sizing: border-box;
@@ -130,11 +131,12 @@ white-space: nowrap;
   justify-content: flex-start;
 }
 
-.order_tile .employee_details p{
-  margin:2px 5px;
+.orderTile .employeeDetails p {
+  margin: 2px 0px;
+  font-size:0.9em;
 }
 
-.employee_info{
+.employeeInfo{
   display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -146,7 +148,7 @@ white-space: nowrap;
     color: white;
 }
 
-.employee_info p.text_heading{
+.employeeInfo .employeeDetails p.textHeading{
   font-size:1.1em;
   margin-top:5px;
   margin-bottom:5px;
@@ -154,7 +156,7 @@ white-space: nowrap;
   font-family: 'Lato', sans-serif;
 }
 
-.employee_info img{
+.employeeInfo img{
   border-radius:150px;
   border-bottom-left-radius: 0px;
   border-top: 4px solid #fff;
@@ -166,36 +168,20 @@ white-space: nowrap;
   display:flex;
 }
 
-.order_info{
+.orderInfo{
   background-color:white;
   border-bottom-right-radius: 48px;
 }
 
-@media only screen and (min-width: 768px) {
-  .order_tile{
-    max-width: 440px;
-  }
-
-  .order_tile .employee_details{
-    margin-top:0;
-  }
-  .employee_info{
-    justify-content: flex-start
-  }
-
-  .employee_info img{
-    margin-left:20px;
-    margin-right:40px;
-  }
-}
 
 
-.employee_info div{
+
+.employeeInfo div{
   display:flex;
   flex-direction:column;
 }
 
-.order_tile .dead_line{
+.orderTile .deadLine{
   bottom: 0;
   right: 40px;
   color: white;
@@ -205,12 +191,12 @@ white-space: nowrap;
   padding: 0 15px;
 }
 
-.order_tile.hide{
+.orderTile.hide{
   display:none;
 }
 
 #controls{
-  padding:70px 0;
+  padding:45px 0;
   margin-bottom:100px;
   background-color:white;
 }
@@ -226,6 +212,10 @@ white-space: nowrap;
   min-width:300px;
 }
 
+.filterBar h2{
+  margin-top:0;
+}
+
 .filterBar input{
   width: 89%;
   font-size:1.5em;
@@ -236,13 +226,13 @@ white-space: nowrap;
   box-sizing: content-box;
 }
 
-.deadline_order{
+.deadlineOrder{
   display:flex;
   justify-content:center;
 }
 
 
-.deadline_order p{
+.deadlineOrder p{
   text-align:center;
   font-size:1.2em;
   margin: 0 15px;
@@ -296,3 +286,76 @@ input[type=range]::-moz-range-thumb {
   cursor: pointer;
 }
 
+
+/* Added for sticky footer */
+.stickyFooterWrapper {
+  flex: 1 0 auto;
+  min-height: calc(100% - 60px);
+}
+
+footer{
+  background-color:#27686b;
+  color:white;
+  width: 100%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items:center;
+  display:flex;
+  margin-top:-60px;
+  height:60px;
+}
+
+footer p{
+  margin:0px;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .employeeInfo{
+    justify-content: flex-start;
+  }
+
+  .orderTile{
+    width:45%;
+    margin-left:2.5%;
+    margin-right:2.5%;
+  }
+
+  .orderHeader .gradientLayer h1{ 
+    font-size:3em;
+    margin: 10px 0;
+  }
+
+  .employeeInfo .employeeDetails{
+    margin: 10px auto 0 auto;
+  }
+
+  .employeeInfo img{
+    margin-left:20px;
+    margin-right:10px;
+  }
+
+  
+}
+
+
+@media only screen and (min-width: 1120px) {
+  #ordersContainer{
+    justify-content: start;
+  }
+
+  .orderTile{
+    width:30.3%;
+    margin-left:1.5%;
+    margin-right:1.5%;
+  }
+
+  .employeeInfo img {
+    margin-left:10px;
+    margin-right:10px;
+  }
+
+.employeeInfo .employeeDetails p.textHeading{
+  margin-bottom: 0;
+}
+}

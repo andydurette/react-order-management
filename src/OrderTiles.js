@@ -29,24 +29,24 @@ formatAMPM = (date) => {
 render() {
   return (
     //Compares the the employee string to the searchbox value to check if contains the values of the search state
-      <div className={ (this.props.employeeName.toString().toLowerCase().includes(this.props.search.toString().toLowerCase())) === true ? "order_tile" : "order_tile hide"} >
-         <p className="order_name">{this.props.workOrderName}</p>
-         <div className="employee_info">
+      <div className={ (this.props.employeeName.toString().toLowerCase().includes(this.props.search.toString().toLowerCase())) === true ? "orderTile" : "orderTile hide"} >
+         <p className="orderName">{this.props.workOrderName}</p>
+         <div className="employeeInfo">
          <img src={this.props.employeeImage} alt=""></img> 
-          <div className="employee_details">
-            <p className="text_heading">Currier Name</p>
+          <div className="employeeDetails">
+            <p className="textHeading">Courier Name</p>
             <p>{this.props.employeeName}</p>
           {/*  <p>{this.props.employeeCompanyName}</p> */}
-            <p className="text_heading">Currier Contact</p>
+            <p className="textHeading">Courier Contact</p>
             <p >{this.props.employeeEmail}</p>
           </div>
         </div>
-        <div className="dead_line">
-         <p>Estimated Delivery: {this.formatDMY(new Date(this.props.deadline))}&nbsp;<span className="no-wrap">{this.formatAMPM(new Date(this.props.deadline))}</span></p>
+        <div className="deadLine">
+         <p>Estimated Delivery: {this.formatDMY(new Date(this.props.deadline))}&nbsp;<span className="noWrap">{this.formatAMPM(new Date(this.props.deadline))}</span></p>
         </div>
-        <div className="order_info">
-        <p className="order_title">Order Details</p> 
-          <p className="order_copy">{this.props.workOrderDescription}</p>
+        <div className="orderInfo">
+        <p className="orderTitle">Order Details</p> 
+          <p className="orderCopy">{this.props.workOrderDescription}</p>
         </div>
        
        
