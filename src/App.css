@@ -171,10 +171,8 @@ white-space: nowrap;
 .orderInfo{
   background-color:white;
   border-bottom-right-radius: 48px;
+  height:100%;
 }
-
-
-
 
 .employeeInfo div{
   display:flex;
