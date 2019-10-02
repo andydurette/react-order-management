@@ -1,6 +1,6 @@
 # Bee site built with react
 
-This is a react site portraying a fictional company box co, it uses promises to load json to create initial state and about forms to adjust state.
+This is a react site portraying a fictional company box co, it uses promises to load json to create initial state and forms to adjust state.
 
 Live Link: https://react-order-management.netlify.com/
 
