@@ -1,4 +1,4 @@
-# Bee site built with react
+# Order Management Site Made with React
 
 This is a react site portraying a fictional company box co, it uses promises to load json to create initial state and forms to adjust state.
 
